@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍳 AI Recipe Generator - Powered by Gemini</title>
+    
+    <!-- CSS from static folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Font Awesome (CDN is fine) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-robot"></i> AI Recipe Generator
+                <span class="venv-badge"><i class="fas fa-code-branch"></i> venv</span>
+            </h1>
+            <p>Powered by Google Gemini Generative AI</p>
+            <span class="genai-badge">
+                <i class="fas fa-microchip"></i> Gemini 1.5 Pro · Generative AI
+            </span>
+        </div>
+
+        <!-- Setup Instructions -->
+        <div class="setup-instructions">
+            <i class="fas fa-info-circle"></i> 
+            <strong>Running in virtual environment:</strong> 
+            This app is configured to run in a Python venv for clean dependency isolation.
+            <br>
+            <small>Static files served from: /static/css/style.css and /static/js/script.js</small>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Section -->
+            <div class="input-section">
+                <h2><i class="fas fa-kitchen-set"></i> What's in Your Kitchen?</h2>
+                
+                <div class="form-group">
+                    <label for="ingredients"><i class="fas fa-carrot"></i> Ingredients (comma separated)</label>
+                    <textarea id="ingredients" placeholder="e.g., chicken, rice, tomatoes, onion, garlic, bell peppers">chicken, rice, tomatoes, onion, garlic</textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cuisine"><i class="fas fa-globe"></i> Cuisine</label>
+                        <select id="cuisine">
+                            <option value="any">Any Cuisine</option>
+                            <option value="italian">Italian</option>
+                            <option value="asian">Asian</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="indian">Indian</option>
+                            <option value="mediterranean">Mediterranean</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meal-type"><i class="fas fa-clock"></i> Meal Type</label>
+                        <select id="meal-type">
+                            <option value="">Any Meal</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dietary"><i class="fas fa-leaf"></i> Dietary</label>
+                        <select id="dietary">
+                            <option value="">None</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="gluten_free">Gluten Free</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servings"><i class="fas fa-users"></i> Servings</label>
+                        <input type="number" id="servings" min="1" max="12" value="4">
+                    </div>
+                </div>
+
+                <button class="generate-btn" onclick="generateRecipe()">
+                    <i class="fas fa-magic"></i> Generate Recipe with Generative AI
+                </button>
+
+                <!-- Loading -->
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p><i class="fas fa-brain"></i> Generative AI is creating your recipe...</p>
+                    <small>Using Gemini 1.5 Pro</small>
+                </div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="output-section">
+                <div id="recipe-output">
+                    <!-- Empty State -->
+                    <div class="empty-state" id="empty-state">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Your Recipe Will Appear Here</h3>
+                        <p>Enter ingredients and click generate to see the AI magic!</p>
+                        <div style="margin-top: 20px; font-size: 0.9em; color: #999;">
+                            <i class="fas fa-microchip"></i> Generative AI at work
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; color: white; margin-top: 30px;">
+            <p>Made with <i class="fas fa-heart"></i> using Generative AI in Python venv</p>
+        </div>
+    </div>
+
+    <!-- JavaScript from static folder -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
